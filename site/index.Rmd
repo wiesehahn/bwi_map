@@ -28,7 +28,7 @@ leaflet(options = leafletOptions(crs = leafletCRS("L.CRS.Simple"), minZoom = 2,
   addTiles(tiles) %>% 
   setView(58,-17,4) %>%
   # links, unten, rechts, oben
-  setMaxBounds(-5,-160,110,5) %>%
+  setMaxBounds(-5,-160,150,5) %>%
   addEasyButton(easyButton(
     icon="fa-expand", title="Overview",
     onClick=JS("function(btn, map){ map.setView([-50, 50], 2); }"))) %>%
