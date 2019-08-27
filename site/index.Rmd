@@ -5,50 +5,42 @@ output:
     toc: false
 ---
 
-```{r,  echo=FALSE}
+```{r,  echo=FALSE, message=FALSE, warning=FALSE}
 library(leaflet)
 library(here)
-
-print("test1")
 
 #tiles <- here("output_data/tiles/{z}/{x}/{y}.png")
 
 tiles <- "https://github.com/wiesehahn/bwi_map/blob/master/output_data/tiles/{z}/{x}/{y}.png?raw=true"
 
-leaflet(options = leafletOptions(crs = leafletCRS("L.CRS.Simple"), minZoom = 0, 
-                                 maxZoom = 7, attributionControl = FALSE)) %>% 
+leaflet(options = leafletOptions(crs = leafletCRS("L.CRS.Simple"), minZoom = 2, 
+                                 maxZoom = 6, attributionControl = FALSE)) %>% 
   addTiles(tiles) %>% 
-  setView(0, 0, 2)
+  setView(4000,1000,3)
 
 ```
 
 
-```{r,  echo=FALSE}
-print("test2")
-
-#tiles <- here("output_data/tiles/{z}/{x}/{y}.png")
-
-tiles <- "https://wiesehahn.github.io/bwi_map/output_data/tiles/{z}/{x}/{y}.png"
-
-leaflet(options = leafletOptions(crs = leafletCRS("L.CRS.Simple"), minZoom = 0, 
-                                 maxZoom = 7, attributionControl = FALSE)) %>% 
-  addTiles(tiles) %>% 
-  setView(0, 0, 2)
-
-```
 
 
-```{r,  echo=FALSE}
-print("test3")
+
+```{r,  echo=FALSE, message=FALSE, warning=FALSE}
+library(leaflet)
+library(htmltools)
+library(htmlwidgets)
+library(here)
 
 #tiles <- here("output_data/tiles/{z}/{x}/{y}.png")
 
 tiles <- "https://raw.githubusercontent.com/wiesehahn/bwi_map/master/output_data/tiles/{z}/{x}/{y}.png"
 
-leaflet(options = leafletOptions(crs = leafletCRS("L.CRS.Simple"), minZoom = 0, 
-                                 maxZoom = 7, attributionControl = FALSE)) %>% 
+leaflet(options = leafletOptions(crs = leafletCRS("L.CRS.Simple"), minZoom = 2, 
+                                 maxZoom = 6, attributionControl = FALSE)) %>% 
   addTiles(tiles) %>% 
-  setView(0, 0, 2)
+  setView(4000,5000, 2) %>%
+  addEasyButton(easyButton(
+    icon="fa-expand", title="Overview",
+    onClick=JS("function(btn, map){ map.setView(4000,5000,0); }")))
 
 ```
 
