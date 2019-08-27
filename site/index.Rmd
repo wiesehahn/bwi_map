@@ -4,6 +4,21 @@ output:
   html_document:
     toc: false
 ---
+```{r,  echo=FALSE, message=FALSE, warning=FALSE}
+library(leaflet)
+library(here)
+
+#tiles <- here("output_data/tiles/{z}/{x}/{y}.png")
+
+tiles <- "https://github.com/wiesehahn/bwi_map/blob/master/output_data/tiles/{z}/{x}/{y}.png?raw=true"
+
+leaflet(options = leafletOptions(crs = leafletCRS("L.CRS.Simple"), minZoom = 2, 
+                                 maxZoom = 6, attributionControl = FALSE)) %>% 
+  addTiles(tiles) %>% 
+  setView(0,0,2)
+
+```
+
 
 ```{r,  echo=FALSE, message=FALSE, warning=FALSE}
 library(leaflet)
